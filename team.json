@@ -1,0 +1,76 @@
+{
+  "team": [
+    {
+      "name": "John Doe",
+      "position": "Fitness Trainer",
+      "image": "img/team/team-1.jpg",
+      "social": {
+        "facebook": "https://www.facebook.com/johndoe",
+        "twitter": "https://www.twitter.com/johndoe",
+        "youtube": "https://www.youtube.com/johndoe",
+        "instagram": "https://www.instagram.com/johndoe",
+        "email": "mailto:johndoe@example.com"
+      }
+    },
+    {
+      "name": "Jane Smith",
+      "position": "Yoga Instructor",
+      "image": "img/team/team-2.jpg",
+      "social": {
+        "facebook": "https://www.facebook.com/janesmith",
+        "twitter": "https://www.twitter.com/janesmith",
+        "youtube": "https://www.youtube.com/janesmith",
+        "instagram": "https://www.instagram.com/janesmith",
+        "email": "mailto:janesmith@example.com"
+      }
+    },
+    {
+      "name": "Michael Johnson",
+      "position": "Nutritionist",
+      "image": "img/team/team-3.jpg",
+      "social": {
+        "facebook": "https://www.facebook.com/michaeljohnson",
+        "twitter": "https://www.twitter.com/michaeljohnson",
+        "youtube": "https://www.youtube.com/michaeljohnson",
+        "instagram": "https://www.instagram.com/michaeljohnson",
+        "email": "mailto:michaeljohnson@example.com"
+      }
+    },
+    {
+      "name": "Emily Wilson",
+      "position": "Personal Trainer",
+      "image": "img/team/team-4.jpg",
+      "social": {
+        "facebook": "https://www.facebook.com/emilywilson",
+        "twitter": "https://www.twitter.com/emilywilson",
+        "youtube": "https://www.youtube.com/emilywilson",
+        "instagram": "https://www.instagram.com/emilywilson",
+        "email": "mailto:emilywilson@example.com"
+      }
+    },
+    {
+      "name": "David Brown",
+      "position": "Pilates Instructor",
+      "image": "img/team/team-5.jpg",
+      "social": {
+        "facebook": "https://www.facebook.com/davidbrown",
+        "twitter": "https://www.twitter.com/davidbrown",
+        "youtube": "https://www.youtube.com/davidbrown",
+        "instagram": "https://www.instagram.com/davidbrown",
+        "email": "mailto:davidbrown@example.com"
+      }
+    },
+    {
+      "name": "Sarah Miller",
+      "position": "Zumba Instructor",
+      "image": "img/team/team-6.jpg",
+      "social": {
+        "facebook": "https://www.facebook.com/sarahmiller",
+        "twitter": "https://www.twitter.com/sarahmiller",
+        "youtube": "https://www.youtube.com/sarahmiller",
+        "instagram": "https://www.instagram.com/sarahmiller",
+        "email": "mailto:sarahmiller@example.com"
+      }
+    }
+  ]
+}
