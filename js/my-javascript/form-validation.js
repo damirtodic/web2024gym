@@ -47,7 +47,6 @@ $(document).ready(function () {
       },
     },
     submitHandler: function (form) {
-      // Prepare data for AJAX request
       var formData = $(form).serialize();
       console.log(formData);
       $.ajax({
@@ -60,7 +59,6 @@ $(document).ready(function () {
           alert("User registered successfully!");
         },
         error: function (xhr, status, error) {
-          // Handle error response (e.g., show error message)
           if (xhr.responseText) {
             alert("Error registering user: " + xhr.responseText);
           }
@@ -101,7 +99,7 @@ $(document).ready(function () {
 
       $.ajax({
         type: "POST",
-        url: "http://localhost/web-2024/web2024gym/backend/login_user.php", // Change to the correct URL of your login script
+        url: "http://localhost/web-2024/web2024gym/backend/login_user.php",
         data: { email: email, password: password },
         dataType: "json",
         success: function (response) {

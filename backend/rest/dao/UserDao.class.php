@@ -22,8 +22,6 @@ class UserDao extends BaseDao {
 
             return true; // Insert successful
         } catch (PDOException $e) {
-            // Handle exceptions (e.g., duplicate entry error for unique email)
-            // You might want to log or handle the error differently
             echo "Error: " . $e->getMessage();
             return false; // Insert failed
         }

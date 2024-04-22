@@ -216,7 +216,6 @@ function enrollNow(subscriptionId) {
         success: function (response) {
           console.log(response.message);
           refetchSubscriptions();
-          // You can perform additional actions after successful subscription creation
         },
         error: function (xhr, status, error) {
           console.error("Error creating subscription:", error);
