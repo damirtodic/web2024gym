@@ -54,7 +54,7 @@
           </div>
           <div class="col-lg-6">
             <div class="leave-comment">
-              <form id="contact" action="#">
+              <form id="contactForm">
                 <input
                   type="text"
                   id="name"
@@ -70,9 +70,9 @@
                   required
                 />
                 <textarea
-                  id="comment"
-                  name="comment"
-                  placeholder="Comment"
+                  id="message"
+                  name="message"
+                  placeholder="Message"
                   required
                 ></textarea>
                 <button type="submit">Submit</button>
@@ -85,21 +85,27 @@
     <!-- Contact Section End -->
 
     <!-- Js Plugins -->
-
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery.barfiller.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-      //FORM HANDLING
       $(document).ready(function () {
-        $("#contact").on("submit", function (e) {
+        $("#contactForm").on("submit", function (e) {
           e.preventDefault();
-          alert("Submitted");
+
+          var formData = $(this).serialize();
+
+          $.ajax({
+            type: "POST",
+            url: "http://localhost/web-2024/web2024gym/backend/contact_us.php",
+            data: formData,
+            dataType: "json",
+            success: function (response) {
+              alert(response.message);
+            },
+            error: function (xhr, status, error) {
+              console.error("Error submitting form:", error);
+            },
+          });
         });
       });
     </script>

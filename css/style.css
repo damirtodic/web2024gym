@@ -31,7 +31,12 @@
 
 /* Template default CSS
 /*----------------------------------------*/
-
+#subscribed-until {
+  color: green;
+  /* position: absolute;
+  bottom: 0px; */
+  rotate: 4deg;
+}
 .user-name {
   color: grey;
 }
