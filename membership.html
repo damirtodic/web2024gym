@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="zxx">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
   <body>
     <!-- Breadcrumb Section Begin -->
     <section
@@ -33,73 +36,20 @@
             </div>
           </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-8">
-            <div class="ps-item">
-              <h3>Class drop-in</h3>
-              <div class="pi-price">
-                <h2>$ 39.0</h2>
-                <span>SINGLE CLASS</span>
-              </div>
-              <ul>
-                <li>Free riding</li>
-                <li>Unlimited equipments</li>
-                <li>Personal trainer</li>
-                <li>Weight losing classes</li>
-                <li>Month to mouth</li>
-                <li>No time restriction</li>
-              </ul>
-              <a class="primary-btn pricing-btn" onclick="enrollNow()">
-                Enroll now
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-8">
-            <div class="ps-item">
-              <h3>12 Month unlimited</h3>
-              <div class="pi-price">
-                <h2>$ 99.0</h2>
-                <span>SINGLE CLASS</span>
-              </div>
-              <ul>
-                <li>Free riding</li>
-                <li>Unlimited equipments</li>
-                <li>Personal trainer</li>
-                <li>Weight losing classes</li>
-                <li>Month to mouth</li>
-                <li>No time restriction</li>
-              </ul>
-              <a class="primary-btn pricing-btn" onclick="enrollNow()">
-                Enroll now
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-8">
-            <div class="ps-item">
-              <h3>6 Month unlimited</h3>
-              <div class="pi-price">
-                <h2>$ 59.0</h2>
-                <span>SINGLE CLASS</span>
-              </div>
-              <ul>
-                <li>Free riding</li>
-                <li>Unlimited equipments</li>
-                <li>Personal trainer</li>
-                <li>Weight losing classes</li>
-                <li>Month to mouth</li>
-                <li>No time restriction</li>
-              </ul>
-              <a class="primary-btn pricing-btn" onclick="enrollNow()">
-                Enroll now
-              </a>
-            </div>
-          </div>
+        <div class="row justify-content-center" id="pricing-items-container">
+          <!-- Pricing items will be dynamically populated here -->
         </div>
       </div>
     </section>
     <!-- Pricing Section End -->
 
     <!-- Js Plugins -->
+    <script>
+      $(document).ready(function () {
+        refetchSubscriptions();
+      });
+    </script>
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>

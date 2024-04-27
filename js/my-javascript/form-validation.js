@@ -47,7 +47,23 @@ $(document).ready(function () {
       },
     },
     submitHandler: function (form) {
-      alert("submitano");
+      var formData = $(form).serialize();
+      console.log(formData);
+      $.ajax({
+        type: "POST",
+        url: "http://localhost/web-2024/web2024gym/backend/add_user.php",
+        data: formData,
+        dataType: "json",
+        success: function (response) {
+          closeRegisterModal();
+          alert("User registered successfully!");
+        },
+        error: function (xhr, status, error) {
+          if (xhr.responseText) {
+            alert("Error registering user: " + xhr.responseText);
+          }
+        },
+      });
     },
   });
 });
@@ -80,29 +96,32 @@ $(document).ready(function () {
       event.preventDefault();
       var email = $("#login-email").val();
       var password = $("#login-password").val();
-      $.getJSON("users.json", function (data) {
-        var users = data.users;
-        var loggedInUser = users.find(function (user) {
-          return user.email === email && user.password === password;
-        });
 
-        if (loggedInUser) {
-          localStorage.setItem("userId", loggedInUser.id);
-          localStorage.setItem("userName", loggedInUser.name);
+      $.ajax({
+        type: "POST",
+        url: "http://localhost/web-2024/web2024gym/backend/login_user.php",
+        data: { email: email, password: password },
+        dataType: "json",
+        success: function (response) {
+          if (response.data) {
+            localStorage.setItem("userId", response.data.id);
+            localStorage.setItem("userName", response.data.name);
 
-          // Hide buttons
-          $(".auth-buttons-holder").addClass("hidden");
-          $(".top-option").addClass("hidden");
-          $(".logout-button-div").css("display", "flex");
-          $("#user-name").text(loggedInUser.name);
+            // Hide buttons
+            $(".auth-buttons-holder").addClass("hidden");
+            $(".top-option").addClass("hidden");
+            $(".logout-button-div").css("display", "flex");
+            $("#user-name").text(response.data.name);
 
-          // Close modal
-          closeModal();
-        } else {
-          alert("Invalid email or password");
-        }
-      }).fail(function () {
-        alert("Error loading users data");
+            // Close modal
+            closeModal();
+          } else {
+            alert("Invalid email or password");
+          }
+        },
+        error: function () {
+          alert("Error logging in");
+        },
       });
     },
   });

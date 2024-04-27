@@ -2,7 +2,7 @@ $(document).ready(function () {
   // Function to fetch team data from JSON file
   function fetchTeamData() {
     $.ajax({
-      url: "team.json",
+      url: "http://localhost/web-2024/web2024gym/backend/fetch_employees.php",
       dataType: "json",
       success: function (data) {
         console.log(data);
@@ -13,7 +13,7 @@ $(document).ready(function () {
               '<div class="col-lg-4 col-sm-6">' +
               '<div class="ts-item set-bg" style="background-image: url(' +
               member.image +
-              ')">' + // Set background image here
+              ')">' +
               '<div class="ts_text">' +
               "<h4>" +
               member.name +
