@@ -62,6 +62,18 @@ class UserDao extends BaseDao {
             return [];
         }
     }
+    public function delete_user($user_id) {
+        try {
+            $query = "DELETE FROM Users WHERE id = :id";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bindParam(':id', $user_id);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 
 ?>
