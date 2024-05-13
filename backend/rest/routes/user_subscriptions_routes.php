@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/../services/UserSubscriptionsService.class.php';
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 Flight::set('user_subscriptions_service', new UserSubscriptionsService());
 
     /**
@@ -52,6 +55,9 @@ Flight::route('POST /user-subscriptions', function(){
  *      path="/add-subscription",
  *      tags={"subscriptions"},
  *      summary="Add Subscription",
+ *          security={
+ *          {"ApiKey": {}}   
+ *      },
  *      description="Endpoint to add a subscription for a user.",
  *      @OA\RequestBody(
  *          required=true,
@@ -87,6 +93,15 @@ Flight::route('POST /user-subscriptions', function(){
  * )
  */
 Flight::route('POST /add-subscription', function(){
+    try {
+        $token = Flight::request()->getHeader("Authentication");
+        if(!$token)
+            Flight::halt(401, "Missing authentication header");
+
+        JWT::decode($token, new Key(JWT_SECRET, 'HS256'));
+    } catch (\Exception $e) {
+        Flight::halt(401, $e->getMessage());
+    }
     $payload = Flight::request()->data;
     $userId = $payload['user_id'] ?? null;
     $subscriptionId = $payload['subscription_id'] ?? null;

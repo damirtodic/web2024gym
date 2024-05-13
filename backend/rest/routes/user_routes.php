@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/../services/UserService.class.php';
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 Flight::set('user_service', new UserService());
 /**
  * @OA\Post(
@@ -131,6 +134,38 @@ Flight::route('POST /login', function(){
         Flight::json(['error' => 'Invalid email or password'], 401);
     }
 });
+
+
+ /**
+     * @OA\Post(
+     *      path="/logout",
+     *      tags={"auth"},
+     *      summary="Logout from the system",
+     *      security={
+     *          {"ApiKey": {}}   
+     *      },
+     *      @OA\Response(
+     *           response=200,
+     *           description="Success response or exception if unable to verify jwt token"
+     *      ),
+     * )
+     */
+    Flight::route('POST /logout', function() {
+        try {
+            $token = Flight::request()->getHeader("Authentication");
+            if(!$token)
+                Flight::halt(401, "Missing authentication header");
+
+            $decoded_token = JWT::decode($token, new Key(JWT_SECRET, 'HS256'));
+
+            Flight::json([
+                'jwt_decoded' => $decoded_token,
+                'user' => $decoded_token->user
+            ]);
+        } catch (\Exception $e) {
+            Flight::halt(401, $e->getMessage());
+        }
+    });
 
 
  /**
