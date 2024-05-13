@@ -51,7 +51,7 @@ $(document).ready(function () {
       console.log(formData);
       $.ajax({
         type: "POST",
-        url: "http://localhost/web-2024/web2024gym/backend/add_user.php",
+        url: "http://localhost/web-2024/web2024gym/backend/register",
         data: formData,
         dataType: "json",
         success: function (response) {
@@ -99,13 +99,14 @@ $(document).ready(function () {
 
       $.ajax({
         type: "POST",
-        url: "http://localhost/web-2024/web2024gym/backend/login_user.php",
+        url: "http://localhost/web-2024/web2024gym/backend/login",
         data: { email: email, password: password },
         dataType: "json",
         success: function (response) {
           if (response.data) {
             localStorage.setItem("userId", response.data.id);
             localStorage.setItem("userName", response.data.name);
+            localStorage.setItem("token", response.data.token);
 
             // Hide buttons
             $(".auth-buttons-holder").addClass("hidden");
