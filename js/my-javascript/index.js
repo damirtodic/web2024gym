@@ -118,22 +118,11 @@ function logout() {
 
 function refetchSubscriptions() {
   localStorage.setItem("preventEnroll", "false");
-  $.ajax({
-    url: "http://localhost/web-2024/web2024gym/backend/fetch_subscriptions.php",
-    type: "GET",
-    dataType: "json",
-    success: function (data) {
-      populatePricingItems(data);
-    },
-    error: function () {
-      console.log("Error fetching subscriptions.");
-    },
-  });
   var userId = localStorage.getItem("userId");
   if (userId) {
     // Fetch active subscription IDs for the user
     $.ajax({
-      url: "http://localhost/web-2024/web2024gym/backend/fetch_subscription_by_userId.php",
+      url: "http://localhost/web-2024/web2024gym/backend/user-subscriptions",
       type: "POST",
       data: { user_id: userId },
       dataType: "json",
@@ -206,13 +195,21 @@ function enrollNow(subscriptionId) {
   if (preventEnroll === "false") {
     if (userId && userName) {
       $.ajax({
-        url: "http://localhost/web-2024/web2024gym/backend/add_subscription.php",
+        url: "http://localhost/web-2024/web2024gym/backend/add-subscription",
         type: "POST",
         data: {
           user_id: userId,
           subscription_id: subscriptionId,
         },
         dataType: "json",
+        beforeSend: function (xhr) {
+          // Check if token exists in localStorage
+          var token = localStorage.getItem("token");
+          if (token) {
+            // Set Authorization header with the token
+            xhr.setRequestHeader("Authentication", token);
+          }
+        },
         success: function (response) {
           console.log(response.message);
           refetchSubscriptions();

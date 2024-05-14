@@ -17,6 +17,9 @@ class UserService{
         public function fetch_employees(){
             return $this->user_dao->fetch_employees();
         }
+        public function delete_user($userId){
+            return $this->user_dao->delete_user($userId);
+        }
  
 }
 ?>
