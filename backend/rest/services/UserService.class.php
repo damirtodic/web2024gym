@@ -20,6 +20,9 @@ class UserService{
         public function delete_user($userId){
             return $this->user_dao->delete_user($userId);
         }
+        public function paginated_users($search_param, $page){
+            return $this->user_dao->paginated_users($search_param, $page);
+        }
  
 }
 ?>

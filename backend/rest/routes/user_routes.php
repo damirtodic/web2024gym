@@ -205,6 +205,69 @@ Flight::route('GET /employees', function(){
     header('Content-Type: application/json');
     echo json_encode(['team' => $team], JSON_PRETTY_PRINT);
 });
+
+/**
+ * @OA\Get(
+ *      path="/users",
+ *      tags={"users"},
+ *      summary="Paginated active subscription users",
+ *      security={
+ *          {"ApiKey": {}}   
+ *      },
+ *      description="Endpoint to fetch users",
+ *      @OA\Parameter(
+ *          name="page",
+ *          in="query",
+ *          required=false,
+ *          @OA\Schema(
+ *              type="integer"
+ *          ),
+ *          description="Page number for pagination"
+ *      ),
+ *      @OA\Parameter(
+ *          name="search_param",
+ *          in="query",
+ *          required=false,
+ *          @OA\Schema(
+ *              type="string"
+ *          ),
+ *          description="Search parameter for filtering users by name"
+ *      ),
+ *      @OA\Response(
+ *          response=200,
+ *          description="Returned successfully"
+ *      ),
+ *      @OA\Response(
+ *          response=400,
+ *          description="Bad request"
+ *      ),
+ *      @OA\Response(
+ *          response=401,
+ *          description="Unauthorized"
+ *      ),
+ * )
+ */
+Flight::route('GET /users', function(){
+    $user = Flight::get('user');
+    if ($user->role_id !== 1) {
+        Flight::json(['error' => 'Unauthorized.'], 401);
+        return;
+    }
+
+    $page = Flight::request()->query->page ?? 1;
+    $search_param = Flight::request()->query->search_param ?? '';
+
+    $user_service = Flight::get('user_service');
+    $result = $user_service->paginated_users($search_param, $page);
+
+    if ($result !== false) {
+        Flight::json(['result' => $result], 200);
+    } else {
+        Flight::json(['error' => 'Failed to fetch users.'], 400);
+    }
+});
+
+
 /**
  * @OA\Delete(
  *      path="/user/{id}",

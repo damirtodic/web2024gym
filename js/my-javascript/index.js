@@ -72,8 +72,9 @@ $(document).ready(function () {
 $(document).ready(function () {
   function checkLocalStorage() {
     var userId = localStorage.getItem("userId");
+    var token = localStorage.getItem("token");
     var userName = localStorage.getItem("userName");
-    if (userId && userName) {
+    if (userId && userName && token) {
       $("#user-name").text(userName);
       $(".top-option").addClass("hidden");
       $(".auth-buttons-holder").addClass("hidden");
@@ -110,6 +111,7 @@ function closeRegisterModal() {
 function logout() {
   localStorage.removeItem("userId");
   localStorage.removeItem("userEmail");
+  localStorage.removeItem("token");
   $(".auth-buttons-holder").removeClass("hidden");
   $(".top-option").removeClass("hidden");
   $(".logout-button-div").css("display", "none");
@@ -118,14 +120,20 @@ function logout() {
 
 function refetchSubscriptions() {
   localStorage.setItem("preventEnroll", "false");
-  var userId = localStorage.getItem("userId");
-  if (userId) {
+  var token = localStorage.getItem("token");
+  if (token) {
     // Fetch active subscription IDs for the user
     $.ajax({
-      url: "http://localhost/web-2024/web2024gym/backend/user-subscriptions",
-      type: "POST",
-      data: { user_id: userId },
+      url: "../../backend/user-subscriptions",
+      type: "GET",
       dataType: "json",
+      beforeSend: function (xhr) {
+        var token = localStorage.getItem("token");
+        if (token) {
+          console.log(token);
+          xhr.setRequestHeader("Authentication", token);
+        }
+      },
       success: function (data) {
         if (data.error) {
           console.log("Error: " + data.error);
@@ -195,10 +203,9 @@ function enrollNow(subscriptionId) {
   if (preventEnroll === "false") {
     if (userId && userName) {
       $.ajax({
-        url: "http://localhost/web-2024/web2024gym/backend/add-subscription",
+        url: "../../backend/add-subscription",
         type: "POST",
         data: {
-          user_id: userId,
           subscription_id: subscriptionId,
         },
         dataType: "json",

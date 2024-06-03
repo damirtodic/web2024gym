@@ -21,7 +21,7 @@ $(document).ready(function () {
       confirmPassword: {
         required: true,
         minlength: 6,
-        equalTo: "#password", // Ensure confirmPassword matches the password field
+        equalTo: "#password",
       },
     },
     messages: {
@@ -51,7 +51,7 @@ $(document).ready(function () {
       console.log(formData);
       $.ajax({
         type: "POST",
-        url: "http://localhost/web-2024/web2024gym/backend/register",
+        url: "../../backend/register",
         data: formData,
         dataType: "json",
         success: function (response) {
@@ -99,7 +99,7 @@ $(document).ready(function () {
 
       $.ajax({
         type: "POST",
-        url: "http://localhost/web-2024/web2024gym/backend/login",
+        url: "../../backend/login",
         data: { email: email, password: password },
         dataType: "json",
         success: function (response) {
@@ -107,6 +107,9 @@ $(document).ready(function () {
             localStorage.setItem("userId", response.data.id);
             localStorage.setItem("userName", response.data.name);
             localStorage.setItem("token", response.data.token);
+            if (response.data.role_id === 1) {
+              window.location.href = "admin.html";
+            }
 
             // Hide buttons
             $(".auth-buttons-holder").addClass("hidden");

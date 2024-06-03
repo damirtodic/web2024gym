@@ -11,7 +11,8 @@ define('DB_PORT',3306);
 define('DB_USER','root');
 define('DB_PASSWORD','');
 define('DB_HOST','127.0.0.1');
+define('BASEURL', 'http://localhost/web-2024/web2024gym');
 
 //JWT Secret
-define('JWT_SECRET','todinjojemajstor')
+define('JWT_SECRET','todinjojemajstor');
 ?>

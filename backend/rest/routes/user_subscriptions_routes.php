@@ -7,24 +7,13 @@ use Firebase\JWT\Key;
 Flight::set('user_subscriptions_service', new UserSubscriptionsService());
 
     /**
-     * @OA\POST(
+     * @OA\GET(
      *      path="/user-subscriptions",
      *      tags={"UserSubscriptions"},
      *      summary="get user subscriptions",
-     *   @OA\RequestBody(
- *          required=true,
- *          @OA\MediaType(
- *              mediaType="application/x-www-form-urlencoded",
- *              @OA\Schema(
- *                  required={"user_id"},
- *                  @OA\Property(
- *                      property="user_id",
- *                      type="integer",
- *                      description="User ID"
- *                  )
- *              )
- *          )
- *      ),
+     *           security={
+     *          {"ApiKey": {}}   
+     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Get all patients"
@@ -32,9 +21,8 @@ Flight::set('user_subscriptions_service', new UserSubscriptionsService());
 
      * )
      */
-Flight::route('POST /user-subscriptions', function(){
-    $userId = Flight::request()->data['user_id'] ?? null;
-
+Flight::route('GET /user-subscriptions', function(){
+    $userId = Flight::get('user')->id;
     if (!$userId) {
         Flight::json(['error' => 'Missing user ID in the payload.'], 400);
         return;
@@ -64,12 +52,7 @@ Flight::route('POST /user-subscriptions', function(){
  *          @OA\MediaType(
  *              mediaType="application/x-www-form-urlencoded",
  *              @OA\Schema(
- *                  required={"user_id", "subscription_id"},
- *                  @OA\Property(
- *                      property="user_id",
- *                      type="integer",
- *                      description="User ID"
- *                  ),
+ *                  required={"subscription_id"},
  *                  @OA\Property(
  *                      property="subscription_id",
  *                      type="integer",
@@ -93,17 +76,8 @@ Flight::route('POST /user-subscriptions', function(){
  * )
  */
 Flight::route('POST /add-subscription', function(){
-    try {
-        $token = Flight::request()->getHeader("Authentication");
-        if(!$token)
-            Flight::halt(401, "Missing authentication header");
-
-        JWT::decode($token, new Key(JWT_SECRET, 'HS256'));
-    } catch (\Exception $e) {
-        Flight::halt(401, $e->getMessage());
-    }
     $payload = Flight::request()->data;
-    $userId = $payload['user_id'] ?? null;
+    $userId = Flight::get('user')->id;
     $subscriptionId = $payload['subscription_id'] ?? null;
 
     if (!$userId || !$subscriptionId) {
