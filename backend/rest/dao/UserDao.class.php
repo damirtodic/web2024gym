@@ -53,7 +53,7 @@ class UserDao extends BaseDao {
                     ];
                     $jwt_token = JWT::encode(
                         $jwt_payload,
-                        JWT_SECRET,
+                        Config::JWT_SECRET(),
                         'HS256',
                     );
                     return array_merge($user, ['token' => $jwt_token]);

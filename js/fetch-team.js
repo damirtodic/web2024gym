@@ -2,7 +2,7 @@ $(document).ready(function () {
   // Function to fetch team data from JSON file
   function fetchTeamData() {
     $.ajax({
-      url: "../backend/employees",
+      url: "http://localhost/web-2024/web2024gym/backend/employees",
       dataType: "json",
       success: function (data) {
         console.log(data);

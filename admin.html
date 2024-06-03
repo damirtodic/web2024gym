@@ -100,7 +100,7 @@
 
         function fetchUsers(page = 1, searchParam = "") {
           $.ajax({
-            url: `./backend/users?page=${page}&search_param=${searchParam}`,
+            url: `http://localhost/web-2024/web2024gym/backend/users?page=${page}&search_param=${searchParam}`,
             type: "GET",
             headers: {
               Authentication: token,

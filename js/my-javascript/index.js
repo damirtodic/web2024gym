@@ -124,7 +124,7 @@ function refetchSubscriptions() {
   if (token) {
     // Fetch active subscription IDs for the user
     $.ajax({
-      url: "../../backend/user-subscriptions",
+      url: "http://localhost/web-2024/web2024gym/backend/user-subscriptions",
       type: "GET",
       dataType: "json",
       beforeSend: function (xhr) {
@@ -203,7 +203,7 @@ function enrollNow(subscriptionId) {
   if (preventEnroll === "false") {
     if (userId && userName) {
       $.ajax({
-        url: "../../backend/add-subscription",
+        url: "http://localhost/web-2024/web2024gym/backend/add-subscription",
         type: "POST",
         data: {
           subscription_id: subscriptionId,

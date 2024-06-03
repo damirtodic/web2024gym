@@ -51,7 +51,7 @@ $(document).ready(function () {
       console.log(formData);
       $.ajax({
         type: "POST",
-        url: "../../backend/register",
+        url: "http://localhost/web-2024/web2024gym/backend/register",
         data: formData,
         dataType: "json",
         success: function (response) {
@@ -99,7 +99,7 @@ $(document).ready(function () {
 
       $.ajax({
         type: "POST",
-        url: "../../backend/login",
+        url: "http://localhost/web-2024/web2024gym/backend/login",
         data: { email: email, password: password },
         dataType: "json",
         success: function (response) {

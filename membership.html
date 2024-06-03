@@ -49,7 +49,7 @@
         localStorage.setItem("preventEnroll", "false");
         const token = localStorage.getItem("token");
         $.ajax({
-          url: "./backend/subscriptions",
+          url: "http://localhost/web-2024/web2024gym/backend/subscriptions",
           type: "GET",
           dataType: "json",
           success: function (data) {
@@ -62,7 +62,7 @@
         if (token) {
           // Fetch active subscription IDs for the user
           $.ajax({
-            url: "./backend/user-subscriptions",
+            url: "http://localhost/web-2024/web2024gym/backend/user-subscriptions",
             type: "GET",
             beforeSend: function (xhr) {
               var token = localStorage.getItem("token");
