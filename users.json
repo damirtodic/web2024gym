@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "damir.todic@stu.ibu.edu.ba",
+      "name": "Damir Todic",
+      "password": "Damir123!"
+    }
+  ]
+}
