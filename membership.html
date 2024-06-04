@@ -1,169 +1,9 @@
 <!DOCTYPE html>
 <html lang="zxx">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Gym Template" />
-    <meta name="keywords" content="Gym, unica, creative, html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Gym</title>
-
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/barfiller.css" type="text/css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
-
   <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-      <div class="loader"></div>
-    </div>
-    <!-- Overlay -->
-    <div id="overlay" class="overlay">
-      <!-- Log In Modal -->
-      <div id="myModal" class="modal">
-        <div class="modal-header-wrapper">
-          <h1 class="modal-heading">Log In</h1>
-          <button class="modal-close-btn" onclick="closeModal()">
-            &times;
-          </button>
-        </div>
-        <form action="#" class="login-form">
-          <div>
-            <label> E-mail </label>
-            <input type="email" placeholder="Email" />
-          </div>
-          <div>
-            <label> Password </label>
-
-            <input type="password" placeholder="Password" />
-          </div>
-          <button type="submit">Log in</button>
-        </form>
-      </div>
-      <div id="registerModal" class="modal">
-        <div class="modal-header-wrapper">
-          <h1 class="modal-heading">Register</h1>
-          <button class="modal-close-btn" onclick="closeRegisterModal()">
-            &times;
-          </button>
-        </div>
-        <form action="#" class="login-form">
-          <div>
-            <label> E-mail </label>
-            <input type="email" placeholder="Email" />
-          </div>
-          <div>
-            <label> Name and Surname </label>
-            <input type="text" placeholder="Name and Surname" />
-          </div>
-          <div>
-            <label> Date of birth </label>
-            <input type="date" />
-          </div>
-          <div>
-            <label> Password </label>
-            <input type="password" placeholder="Password" />
-          </div>
-          <div>
-            <label> Repeat Password </label>
-            <input type="password" placeholder="Password" />
-          </div>
-          <button type="submit">Register</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-      <div class="canvas-close">
-        <i class="fa fa-close"></i>
-      </div>
-      <div class="canvas-search search-switch">
-        <i class="fa fa-search"></i>
-      </div>
-      <nav class="canvas-menu mobile-menu">
-        <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./services.html">Services</a></li>
-          <li><a href="./membership.html">Membership</a></li>
-          <li><a href="./team.html">Our Team</a></li>
-          <li><a href="./contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div id="mobile-menu-wrap"></div>
-      <div class="canvas-social">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-youtube-play"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-      </div>
-    </div>
-    <!-- Offcanvas Menu Section End -->
-
-    <!-- Header Section Begin -->
-    <header class="header-section">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-3">
-            <div class="logo">
-              <a href="./index.html">
-                <img src="img/logo.png" alt="" />
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <nav class="nav-menu">
-              <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li class="active">
-                  <a href="./membership.html">Membership</a>
-                </li>
-                <li><a href="./team.html">Our Team</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-          <div class="col-lg-3">
-            <div class="top-option">
-              <button class="auth-button" onclick="openModal()">Login</button>
-              <button class="auth-button" onclick="openRegisterModal()">
-                Register
-              </button>
-              <div class="to-social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="canvas-open">
-          <i class="fa fa-bars"></i>
-        </div>
-      </div>
-    </header>
-    <!-- Header End -->
-
     <!-- Breadcrumb Section Begin -->
     <section
       class="breadcrumb-section set-bg"
@@ -175,7 +15,7 @@
             <div class="breadcrumb-text">
               <h2>Membership</h2>
               <div class="bt-option">
-                <a href="./index.html">Home</a>
+                <a href="./home.html">Home</a>
                 <span>Membership</span>
               </div>
             </div>
@@ -196,156 +36,107 @@
             </div>
           </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-8">
-            <div class="ps-item">
-              <h3>Class drop-in</h3>
-              <div class="pi-price">
-                <h2>$ 39.0</h2>
-                <span>SINGLE CLASS</span>
-              </div>
-              <ul>
-                <li>Free riding</li>
-                <li>Unlimited equipments</li>
-                <li>Personal trainer</li>
-                <li>Weight losing classes</li>
-                <li>Month to mouth</li>
-                <li>No time restriction</li>
-              </ul>
-              <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-8">
-            <div class="ps-item">
-              <h3>12 Month unlimited</h3>
-              <div class="pi-price">
-                <h2>$ 99.0</h2>
-                <span>SINGLE CLASS</span>
-              </div>
-              <ul>
-                <li>Free riding</li>
-                <li>Unlimited equipments</li>
-                <li>Personal trainer</li>
-                <li>Weight losing classes</li>
-                <li>Month to mouth</li>
-                <li>No time restriction</li>
-              </ul>
-              <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-8">
-            <div class="ps-item">
-              <h3>6 Month unlimited</h3>
-              <div class="pi-price">
-                <h2>$ 59.0</h2>
-                <span>SINGLE CLASS</span>
-              </div>
-              <ul>
-                <li>Free riding</li>
-                <li>Unlimited equipments</li>
-                <li>Personal trainer</li>
-                <li>Weight losing classes</li>
-                <li>Month to mouth</li>
-                <li>No time restriction</li>
-              </ul>
-              <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-            </div>
-          </div>
+        <div class="row justify-content-center" id="pricing-items-container">
+          <!-- Pricing items will be dynamically populated here -->
         </div>
       </div>
     </section>
     <!-- Pricing Section End -->
 
-    <!-- Get In Touch Section Begin -->
-    <div class="gettouch-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="gt-text">
-              <i class="fa fa-map-marker"></i>
-              <p>
-                333 Middle Winchendon Rd, Rindge,<br />
-                NH 03461
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="gt-text">
-              <i class="fa fa-mobile"></i>
-              <ul>
-                <li>125-711-811</li>
-                <li>125-668-886</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="gt-text email">
-              <i class="fa fa-envelope"></i>
-              <p>Support.gymcenter@gmail.com</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Get In Touch Section End -->
-
-    <!-- Footer Section Begin -->
-    <section class="footer-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="fs-about">
-              <div class="fa-logo">
-                <a href="#"><img src="img/logo.png" alt="" /></a>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore dolore magna aliqua endisse
-                ultrices gravida lorem.
-              </p>
-              <div class="fa-social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-envelope-o"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <div class="copyright-text">
-              <p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                All rights reserved | This template is made with
-                <i class="fa fa-heart" aria-hidden="true"></i> by
-                <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Footer Section End -->
-
-    <!-- Search model Begin -->
-    <div class="search-model">
-      <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-          <input type="text" id="search-input" placeholder="Search here....." />
-        </form>
-      </div>
-    </div>
-    <!-- Search model end -->
-
     <!-- Js Plugins -->
+    <script>
+      $(document).ready(function () {
+        localStorage.setItem("preventEnroll", "false");
+        const token = localStorage.getItem("token");
+        $.ajax({
+          url: "http://localhost/web-2024/web2024gym/backend/subscriptions",
+          type: "GET",
+          dataType: "json",
+          success: function (data) {
+            populatePricingItems(data);
+          },
+          error: function () {
+            console.log("Error fetching subscriptions.");
+          },
+        });
+        if (token) {
+          // Fetch active subscription IDs for the user
+          $.ajax({
+            url: "http://localhost/web-2024/web2024gym/backend/user-subscriptions",
+            type: "GET",
+            beforeSend: function (xhr) {
+              var token = localStorage.getItem("token");
+              if (token) {
+                console.log(token);
+                xhr.setRequestHeader("Authentication", token);
+              }
+            },
+            success: function (data) {
+              if (data.error) {
+                console.log("Error: " + data.error);
+              } else {
+                console.log(data);
+                if (data.subscriptions.length > 0) {
+                  disableButtons(data.subscriptions);
+                }
+              }
+            },
+            error: function () {
+              console.log("Error fetching active subscription IDs.");
+            },
+          });
+        }
+
+        function disableButtons(activeSubscription) {
+          for (i = 1; i <= 3; i++) {
+            $("#enrollBtn" + i).text("Already Enrolled");
+          }
+          activeSubscription.forEach(function (subscription) {
+            localStorage.setItem("preventEnroll", true);
+            var subscriptionId = subscription.subscription_id;
+            var expirationDate = subscription.expiration_date;
+            if (expirationDate) {
+              console.log("expiration date good");
+              var expirationText = "Subscribed until " + expirationDate;
+              var paragraphHtml = `<p id='subscribed-until'>${expirationText}</p>`;
+              $("#enrollBtn" + subscriptionId).after(paragraphHtml);
+            }
+          });
+        }
+
+        function populatePricingItems(subscriptions) {
+          var container = $("#pricing-items-container");
+          subscriptions.forEach(function (subscription) {
+            var subscriptionId = subscription.id;
+            var subscriptionType = subscription.subscription_type;
+            var subscriptionPrice = subscription.price;
+
+            var itemHtml = `
+      <div class="col-lg-4 col-md-8">
+        <div class="ps-item">
+          <h3>${subscriptionType}</h3>
+          <div class="pi-price">
+            <h2>$ ${subscriptionPrice}</h2>
+            <span>START TODAY</span>
+          </div>
+          <ul>
+            <li>Free riding</li>
+            <li>Unlimited equipments</li>
+            <li>Personal trainer</li>
+            <li>Weight losing classes</li>
+            <li>Month to mouth</li>
+            <li>No time restriction</li>
+          </ul>
+          <a id="enrollBtn${subscriptionId}" class="primary-btn pricing-btn" onclick="enrollNow(${subscriptionId})">Enroll now</a>
+        </div>
+      </div>
+    `;
+            container.append(itemHtml);
+          });
+        }
+      });
+    </script>
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
@@ -354,6 +145,5 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/auth-modal.js"></script>
   </body>
 </html>

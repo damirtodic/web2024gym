@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Page</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        background-color: #151515;
+        color: white;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        color: white;
+      }
+      #prev-page,
+      #next-page {
+        margin-top: 10px;
+      }
+      input[type="text"] {
+        background-color: #333;
+        color: white;
+        border: 1px solid #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Admin Page</h1>
+    <div class="form-inline">
+      <input
+        type="text"
+        id="search"
+        class="form-control"
+        placeholder="Search by name"
+        value=""
+      />
+      <button id="search-button" class="btn btn-primary ml-2">Search</button>
+      <button id="logout-button" class="btn btn-danger ml-2">Logout</button>
+    </div>
+    <table class="table table-dark table-striped" id="users-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Expiration Date</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="d-flex justify-content-between">
+      <button id="prev-page" class="btn btn-secondary" disabled>
+        Previous
+      </button>
+      <button id="next-page" class="btn btn-secondary" disabled>Next</button>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        function parseJwt(token) {
+          var base64Url = token.split(".")[1];
+          var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+          var jsonPayload = decodeURIComponent(
+            atob(base64)
+              .split("")
+              .map(function (c) {
+                return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+              })
+              .join("")
+          );
+          return JSON.parse(jsonPayload);
+        }
+
+        const token = localStorage.getItem("token");
+        if (!token) {
+          window.location.href = "index.html";
+          return;
+        }
+
+        const decodedToken = parseJwt(token);
+        if (decodedToken.user.role_id !== 1) {
+          window.location.href = "index.html";
+          return;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentPage = parseInt(urlParams.get("page")) || 1;
+        let searchParam = urlParams.get("search_param") || "";
+
+        $("#search").val(searchParam);
+
+        function fetchUsers(page = 1, searchParam = "") {
+          $.ajax({
+            url: `http://localhost/web-2024/web2024gym/backend/users?page=${page}&search_param=${searchParam}`,
+            type: "GET",
+            headers: {
+              Authentication: token,
+            },
+            success: function (response) {
+              const users = response.result.users;
+              const totalResults = response.result.total;
+              const tbody = $("#users-table tbody");
+              tbody.empty();
+              users.forEach((user) => {
+                tbody.append(`
+                  <tr>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.expiration_date}</td>
+                  </tr>
+                `);
+              });
+              updateButtons(page, totalResults);
+            },
+            error: function () {
+              console.log("Error fetching users.");
+            },
+          });
+        }
+
+        function updateButtons(page, totalResults) {
+          $("#prev-page").prop("disabled", page === 1);
+          $("#next-page").prop("disabled", page * 10 >= totalResults);
+        }
+
+        $("#search-button").click(function () {
+          const searchParam = $("#search").val();
+          currentPage = 1;
+          updateUrlParams(currentPage, searchParam);
+          fetchUsers(currentPage, searchParam);
+        });
+
+        $("#prev-page").click(function () {
+          if (currentPage > 1) {
+            currentPage--;
+            updateUrlParams(currentPage, $("#search").val());
+            fetchUsers(currentPage, $("#search").val());
+          }
+        });
+
+        $("#next-page").click(function () {
+          currentPage++;
+          updateUrlParams(currentPage, $("#search").val());
+          fetchUsers(currentPage, $("#search").val());
+        });
+
+        $("#logout-button").click(function () {
+          localStorage.removeItem("token");
+          window.location.href = "index.html";
+        });
+
+        function updateUrlParams(page, searchParam) {
+          const url = new URL(window.location);
+          url.searchParams.set("page", page);
+          if (searchParam) {
+            url.searchParams.set("search_param", searchParam);
+          } else {
+            url.searchParams.delete("search_param");
+          }
+          window.history.pushState({}, "", url);
+        }
+
+        fetchUsers(currentPage, searchParam);
+      });
+    </script>
+  </body>
+</html>

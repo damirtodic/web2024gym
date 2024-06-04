@@ -31,6 +31,77 @@
 
 /* Template default CSS
 /*----------------------------------------*/
+#subscribed-until {
+  color: green;
+  /* position: absolute;
+  bottom: 0px; */
+  rotate: 4deg;
+}
+.user-name {
+  color: grey;
+}
+.error {
+  font-weight: 400 !important;
+  color: red !important;
+}
+.hidden {
+  display: none;
+}
+.pricing-btn {
+  color: white !important;
+  cursor: pointer;
+}
+.logout-button-div {
+  display: inline-flex;
+  height: fit-content;
+  justify-content: right;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 0px;
+}
+.logo {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+.auth-buttons-holder {
+  padding-right: 50px;
+  padding-left: 10px;
+  min-width: max-content;
+}
+@media (min-width: 992px) {
+  .auth-buttons-holder {
+    display: none;
+  }
+}
+@media (max-width: 991px) {
+  .user-name {
+    display: none;
+  }
+  .logout-button-div {
+    position: absolute;
+    right: 70px;
+    bottom: 0px;
+  }
+}
+
+.mobile-navigation-list > li > a {
+  margin: 0;
+  color: #151515;
+  font-weight: 500;
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+}
+.mobile-navigation-list > li > a:hover {
+  color: #f36100;
+}
+.mobile-navigation-list > li {
+  padding: 10px 0;
+  border-bottom: 1px solid #151515;
+}
+
 .auth-button {
   background: #f36100;
   color: white;

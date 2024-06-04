@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Redirect requests for Swagger documentation to swagger.php
+RewriteRule ^web-2024/web2024gym/backend/public/v1/docs(.*)$ /web-2024/web2024gym/backend/public/v1/docs/index.php [L]
+
+# Redirect requests for existing files or directories to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
